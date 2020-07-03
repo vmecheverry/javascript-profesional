@@ -1,0 +1,13 @@
+{
+  "name": "javascript-profesional",
+  "version": "1.0.0",
+  "description": "Rama de practica",
+  "license": "MIT",
+  "author": "Victor Mario Echeverry",
+  "scripts": {
+    "start":"live-server"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
