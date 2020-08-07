@@ -13,32 +13,13 @@
       <h1>PlatziMediaPlayer.js</h1>
       <p>An extensible media player.</p>
     </header>
-
     <main class="container">
       <video class="movie">
         <source src="./assets/ejercicio.mp4" />
       </video>
-
-      <button>Play/Pause</button>
+      <button id="tooglePlay">Play/Pause</button>
+      <button id="toogleMute">Mute/Unmute</button>
     </main>
-    <script>
-      const video = document.querySelector("video"); //Obtengo el elemento video.
-      const button = document.querySelector("button"); //Obtengo el elemento buttom.
-
-      function MediaPlayer(config ){ //Objeto que permite controlar el reproductor de video.
-        this.media =  config.el;
-      }
-
-      MediaPlayer.prototype.play =  function () {
-        if(this.media.paused){
-          this.media.play();
-        }else{
-          this.media.pause();
-        }
-      }
-
-      const player = new MediaPlayer({el: video});
-      button.onclick = ()=>player.play();
-    </script>
+    <script type="module"  src="/assets/index.js"></script>
   </body>
 </html>
