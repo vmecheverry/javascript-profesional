@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de promesas</title>
+</head>
+<body>
+    <button type="button" onclick="sayHello()">Click Me!</button>
+    <ul id="movies"></ul>
+</body>
+<script>
+    async function sayHello() {
+        console.log('xxxxxxxxxxxxxxxxxxxxxxx');
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=24584977ebfc1d7346cede92ace0284c`);
+        const data = await response.json();
+        console.log(data.results);
+        renderMovies(data.results);
+}
+
+
+function renderMovies(movies) {
+        const movieList = document.getElementById('movies');
+        movieList.innerHTML = '';
+
+        movies.forEach(movie => {
+          const listItem = document.createElement('li');
+          listItem.innerHTML = `
+            <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" />
+            https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg
+            <h5>${movie.title}</h5>
+            <p>Released on <em>${movie.release_date}</em></p>
+            `;
+
+          movieList.appendChild(listItem);
+        });
+      }
+
+</script>
+
+
+</html>
