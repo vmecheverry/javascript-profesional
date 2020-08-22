@@ -5,8 +5,19 @@ function MediaPlayer(config ){ //Objeto que permite controlar el reproductor de 
 }
 
 MediaPlayer.prototype._initPlugins =  function () {
+    const player= {
+        play: () => this.play(),
+        pause: () => this.pause(),
+        media: this.media,
+        get muted(){
+            return this.media.muted;
+        },
+        set muted(value){
+            this.media.muted=value;
+        }
+    }
     this.plugins.forEach(plugin => {
-        plugin.run(this);
+        plugin.run(player);
     });
 }
 
@@ -27,11 +38,13 @@ MediaPlayer.prototype.unmute =  function () {
 }
 
 MediaPlayer.prototype.toogleMute =  function () {
+    console.log('Entre a toogleMute');
     if(this.media.muted){
-      this.unmute();
+        this.unmute();
     }else{
         this.mute();
     }
+    console.log(this);
 }
   
 MediaPlayer.prototype.tooglePlay =  function () {
