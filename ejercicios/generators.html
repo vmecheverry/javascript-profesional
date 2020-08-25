@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre Consola</em></p>
+
+    <script>
+        function* simpleGenerator(){
+            console.log("GENERATOR START");
+            yield 1;
+            yield 2;
+            yield 3;
+            console.log("GENERATOR END");
+
+        }
+        
+        function* idMaker(){
+            let id =53;
+            let reset;
+            while (true) {
+                reset= yield id;
+                if(reset){
+                    id=1;
+                }else{
+                    id=id+1;
+                }
+            }   
+        }
+
+        function* fibonacci (){
+            let a=1;
+            let b=1;
+
+            while(true){
+                let nextNo= a+b;
+                a=b;
+                b=nextNo;
+                yield nextNo;
+            }
+        }
+
+        const gen = simpleGenerator();
+
+    </script>
+
+</body>
+</html>
